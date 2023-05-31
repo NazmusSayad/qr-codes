@@ -1,0 +1,1 @@
+export default ["/images/Boom.png","/images/Ggghg.png","/images/Ghhh.png","/images/Hhhh.png","/images/Vhhh.png"]

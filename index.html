@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="./index.js"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --border: 1px;
+        --margin: 35px;
+        --padding: 40px;
+      }
+
+      @page {
+        width: 8.3in;
+        height: 11.7in;
+      }
+
+      .container {
+        width: 8.3in;
+        height: 11.7in;
+        margin-inline: auto;
+        display: grid;
+        place-content: center;
+      }
+
+      #page {
+        aspect-ratio: 3/4;
+        background: black;
+        padding: var(--border);
+        margin: var(--margin);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .box {
+        background-color: white;
+        margin: var(--border);
+        padding: var(--padding);
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section id="page"></section>
+    </div>
+  </body>
+</html>
