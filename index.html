@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="./index.js"></script>
-
     <style>
       * {
         margin: 0;
@@ -14,7 +12,7 @@
       }
 
       :root {
-        --border: 1px;
+        --border: 0.5px;
         --margin: 35px;
         --padding: 40px;
       }
@@ -34,7 +32,7 @@
 
       #page {
         aspect-ratio: 3/4;
-        background: black;
+        background: gray;
         padding: var(--border);
         margin: var(--margin);
         display: grid;
@@ -57,5 +55,21 @@
     <div class="container">
       <section id="page"></section>
     </div>
+
+    <script>
+      const target = 12
+      const page = document.getElementById('page')
+
+      function printImage(url) {
+        const div = document.createElement('div')
+        div.classList.add('box')
+        div.innerHTML = `<img src="${url}" />`
+        page.appendChild(div)
+      }
+
+      for (let i = 0; i < target; i++) {
+        printImage(`/qr/${location.search.slice(1)}.svg`)
+      }
+    </script>
   </body>
 </html>
