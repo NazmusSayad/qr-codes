@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./script.js" defer></script>
     <style>
       * {
         margin: 0;
@@ -12,64 +13,63 @@
       }
 
       :root {
-        --border: 0.5px;
-        --margin: 35px;
-        --padding: 40px;
+        --page-margin: 7.5%;
+        --box-margin: 5%;
+        --border-width: 0.00000000000001px;
       }
 
-      @page {
-        width: 8.3in;
-        height: 11.7in;
-      }
-
-      .container {
-        width: 8.3in;
-        height: 11.7in;
-        margin-inline: auto;
+      body {
+        background-color: #333;
         display: grid;
         place-content: center;
+        height: 100vh;
       }
 
       #page {
-        aspect-ratio: 3/4;
-        background: gray;
-        padding: var(--border);
-        margin: var(--margin);
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .box {
+        width: min(clamp(0px, 95vw, calc((100vh / 4) * 3)), 75vh);
+        margin-inline: auto;
         background-color: white;
-        margin: var(--border);
-        padding: var(--padding);
+        padding: var(--page-margin);
+        border-radius: 1.5%;
       }
 
-      img {
-        max-width: 100%;
-        max-height: 100%;
+      table {
+        width: 100%;
+      }
+
+      table,
+      th,
+      td {
+        border: var(--border-width) dashed gray;
+        border-collapse: collapse;
+      }
+
+      td {
+        padding: var(--box-margin);
+      }
+
+      td img {
+        display: block;
+        width: 100%;
+      }
+
+      @media print {
+        body {
+          background-color: transparent;
+          display: initial;
+          place-content: initial;
+          height: initial;
+        }
+
+        #page {
+          width: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <section id="page"></section>
-    </div>
-
-    <script>
-      const target = 12
-      const page = document.getElementById('page')
-
-      function printImage(url) {
-        const div = document.createElement('div')
-        div.classList.add('box')
-        div.innerHTML = `<img src="${url}" />`
-        page.appendChild(div)
-      }
-
-      for (let i = 0; i < target; i++) {
-        printImage(`/qr/${location.search.slice(1)}.svg`)
-      }
-    </script>
+    <main id="page">
+      <table></table>
+    </main>
   </body>
 </html>
